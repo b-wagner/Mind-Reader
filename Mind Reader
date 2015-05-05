@@ -1,0 +1,398 @@
+/*Mind Reader
+
+A Project in Artificial Intelligence
+CSIT 441
+Ben Wagner
+
+Last Modified May 5, 2015
+*/
+
+%These lines of code are needed to start the program.
+%They will also display the program's final guess, as well as
+%ask if the program guessed the right animal or not.
+%Type "Start." to begin Mind Reader.
+start :- guess(Object),
+	 write('You are thinking of a/an '),
+	 write(Object),
+	 nl,
+	 write('Was that correct? '),
+	 read(Response),
+	 nl,
+	 (   (Response == yes; Response == y)
+	 ->  write('I really can read your mind! Type start. to play again.');
+	     write('Well, it looks like you carbon based life forms still dominate. Type start. if you would like to play again.')),
+	 nl,
+	 undo.
+
+%List of common animals, in alphabetical order.
+guess(alligator) :- alligator, !.
+guess(ant) :- ant, !.
+guess(bear) :- bear, !.
+guess(bee) :- bee, !.
+guess(camel) :- camel, !.
+guess(cat) :- cat, !.
+guess(cheetah) :- cheetah, !.
+guess(chicken) :- chicken, !.
+guess(chimpanzee) :- chimpanzee, !.
+guess(cow) :- cow, !.
+guess(deer) :- deer, !.
+guess(dog) :- dog, !.
+guess(dolphin) :- dolphin, !.
+guess(duck) :- duck, !.
+guess(eagle) :- eagle, !.
+guess(elephant) :- elephant, !.
+guess(fly) :- fly, !.
+guess(fox) :- fox, !.
+guess(frog) :- frog, !.
+guess(giraffe) :- giraffe, !.
+guess(goat) :- goat, !.
+guess(goldfish) :- goldfish, !.
+guess(hamster) :- hamster, !.
+guess(hippopotamus) :- hippopotamus, !.
+guess(horse) :- horse, !.
+guess(kangaroo) :- kangaroo, !.
+guess(lion) :- lion, !.
+guess(lobster) :- lobster, !.
+guess(narwhal) :- narwhal, !.
+guess(octopus) :- octopus, !.
+guess(owl) :- owl, !.
+guess(panda) :- panda, !.
+guess(pig) :- pig, !.
+guess(platypus) :- platypus, !.
+guess(rabbit) :- rabbit, !.
+guess(rat) :- rat, !.
+guess(scorpion) :- scorpion, !.
+guess(seal) :- seal, !.
+guess(shark) :- shark, !.
+guess(sheep) :- sheep, !.
+guess(snail) :- snail, !.
+guess(snake) :- snake, !.
+guess(spider) :- spider, !.
+guess(squirrel) :- squirrel, !.
+guess(tiger) :- tiger, !.
+guess(turtle) :- turtle, !.
+guess(wolf) :- wolf, !.
+guess(zebra) :- zebra, !.
+
+%List of extinct animals
+guess(tyrannosaurus_rex) :- tyrannosaurus_rex, !.
+guess(triceratops) :- triceratops, !.
+guess(stegosaurus) :- stegosaurus, !.
+guess(velociraptor) :- velociraptor, !.
+guess(pterodactyl) :- pterodactyl, !.
+
+%List of fictitious animals
+guess(wumpus) :- wumpus, !.
+
+%If the animal cannot be guessed, it is unknown.
+guess(unknown).
+
+%Common Animal ID Rules
+%Animals are given a few rules describing them.
+alligator :- reptile,
+	     predator,
+	     carnivore,
+	     verify('green in color'),
+	     verify('lives in swamps').
+ant :- insect,
+       verify('smaller than a marble'),
+       verify('live in colonies').
+bear :- mammal,
+	predator,
+	carnivore,
+	verify('live in forests'),
+	verify('have dark fur').
+bee :- insect,
+       flies,
+       verify('live in a hive'),
+       verify('black and yellow in color').
+camel :- mammal,
+	 verify('live in the desert'),
+	 verify('have humps').
+cat :- mammal,
+       feline,
+       domesticated,
+       verify('a common household pet'),
+       verify('have paws').
+cheetah :- mammal,
+	   predator,
+	   feline,
+	   verify('have spots'),
+	   verify('run fast').
+chicken :- bird,
+	   verify('not fly'),
+	   verify('a common food item').
+chimpanzee :- mammal,
+	      primate,
+	      verify('smaller than the average person'),
+	      verify('lives in the jungle').
+cow :- mammal,
+       bovine,
+       domesticated,
+       verify('a common farm animal').
+deer :- mammal,
+	verify('a common game animal'),
+	verify('have antlers'),
+	verify('live in forests').
+dog :- mammal,
+       canine,
+       domesticated,
+       verify('a common household pet'),
+       verify('have paws').
+dolphin :- mammal,
+	   water,
+	   verify('incredibly intelligent').
+duck :- bird,
+	verify('a common game aninal'),
+	verify('tend to hang around water').
+eagle :- bird,
+	 predator,
+	 carnivore,
+	 verify('larger than a basketball'),
+	 verify('the official bird of the Unites States').
+elephant :- mammal,
+	    verify('have tusks'),
+	    verify('typically gray in color').
+fly :- insect,
+       flies,
+       verify('a household pest'),
+       verify('smaller than a marble').
+fox :- mammal,
+       canine,
+       predator,
+       verify('sly'),
+       verify('red in color'),
+       verify('gray in color').
+frog :- amphibian,
+	verify('known to hop'),
+	verify('have webbed feet'),
+	verify('live in wet areas').
+giraffe :- mammal,
+	   herbivore,
+	   verify('have spots'),
+	   verify('have a long a neck').
+goat :- mammal,
+	verify('have horns').
+goldfish :- fish,
+	    verify('common household pet').
+hamster :- mammal,
+	    rodent,
+	    verify('live in a cage').
+hippopotamus :- mammal,
+	        herbivore,
+		verify('native to Africa'),
+		verify('hang around water').
+horse :- mammal,
+	 domesticated,
+	 verify('used as transportation').
+kangaroo :- mammal,
+	    marsupial,
+	    verify('known to hop'),
+	    verify('native to Australia').
+lion :- mammal,
+	predator,
+	feline,
+	carnivore,
+	verify('have a mane'),
+	verify('larger than the average person').
+lobster :- fish,
+	   crustacean,
+	   verify('common food item').
+narwhal :- mammal,
+	   verify('live in water'),
+	   verify('have a horn').
+octopus :- water,
+	   cephalopod,
+	   verify('spray ink in defense').
+owl :- bird,
+       predator,
+       verify('nocturnal').
+panda :- mammal,
+	 herbivore,
+	 verify('black and white in color'),
+	 verify('native to China').
+pig :- mammal,
+       verify('a common farm animal'),
+       verify('the source of bacon').
+platypus :- mammal,
+	    semi-aquatic,
+	    herbivore,
+	    verify('lay eggs'),
+	    verify('have a bill').
+rabbit :- mammal,
+	  verify('known to hop'),
+	  verify('harmless to humans').
+rat :- mammal,
+       rodent,
+       verify('have a long tail'),
+       verify('an urban pest').
+scorpion :- arthropod,
+	    poisonous,
+	    verify('live in the desert'),
+	    verify('have a stinger').
+seal :- mammal,
+	carnivore,
+	semi_aquatic,
+	verify('have blubber').
+shark :- fish,
+	 predator,
+	 carnivore,
+	 verify('larger than the average person'),
+	 verify('have sharp teeth').
+sheep :- mammal,
+	 domesticated,
+	 verify('gentle'),
+	 verify('have wool').
+snail :- mollusc,
+	 verify('one foot').
+snake :- reptile,
+	 verify('have no legs'),
+	 verify('shed its skin').
+spider :- arthropod,
+	  predator,
+	  arachnid,
+	  verify('about the size of a marble'),
+	  verify('feared by most people').
+squirrel :- mammal,
+	    rodent,
+	    verify('have a bushy tail'),
+	    verify('eat acorns').
+tiger :- mammal,
+	 predator,
+	 feline,
+	 carnivore,
+	 verify('have striped fur'),
+	 verify('live in the jungle').
+turtle :- reptile,
+	  semi_aquatic,
+	  verify('have a shell').
+wolf :- mammal,
+	predator,
+	canine,
+	carnivore,
+	verify('tend to travel in packs'),
+	verify('vicious').
+zebra :- mammal,
+	 verify('have striped fur'),
+	 verify('black and white in color').
+
+%Extinct Animals and Rules
+tyrannosaurus_rex :- extinct,
+		     carnivore,
+		     reptile,
+		     verify('larger than a car'),
+		     verify('have relatively small arms').
+triceratops :- extinct,
+	       herbivore,
+	       verify('as large as a car'),
+	       verify('have three horns').
+stegosaurus :- extinct,
+	       herbivore,
+	       verify('have spikes'),
+	       verify('as large as a car').
+velociraptor :- extinct,
+	        reptile,
+	        carnivore,
+		predator,
+		verify('walk on two legs').
+pterodactyl :- extinct,
+	       reptile,
+	       carnivore,
+	       flies,
+	       verify('smaller than the average human').
+
+%Ficticious Animals
+wumpus :- carnivore,
+	  verify('smell bad'),
+	  verify('hairy').
+
+%Classification Rules
+%All animals in the database can be identified
+%using combinations of these rules.
+mammal :- verify('warm blooded'), verify('have hair or fur').
+
+reptile :- verify('cold blooded'), verify('lay eggs'),
+	verify('have scales').
+
+amphibian :- verify('cold blooded'), verify('lays eggs'),
+	     semi_aquatic.
+
+marsupial :- verify('have a pouch'), mammal.
+
+fish :- water, verify('cold blooded'),
+	verify('have scales'), verify('have fins').
+
+water :- verify('live in water').
+
+carnivore :- verify('eat primarily meat').
+
+herbivore :- verify('eat primarily plants').
+
+rodent :- verify('a rodent').
+
+insect :- verify('an insect').
+
+bird :- verify('have wings'), verify('have feathers'),
+	verify('lay eggs').
+
+flies :- verify('have wings'), verify('fly').
+
+feline :- mammal, verify('have paws'), verify('have a tail').
+
+domesticated :- verify('domesticated').
+
+primate :- verify('a primate').
+
+bovine :- verify('the primary source of dairy products'),
+	  mammal.
+
+canine :- mammal, verify('have paws'),
+	  verify('have a good sense of smell').
+
+crustacean :- verify('have claws'), verify('have a shell'), !.
+
+cephalopod :- verify('cold blooded'), verify('have tentacles').
+
+predator :- verify('hunt its food').
+
+arthropod :- verify('have more than four legs').
+
+poisonous :- verify('poisonous').
+
+semi_aquatic :- verify('live on both the land and in water').
+
+mollusc :- verify('cold blooded'), verify('have a shell'), !.
+
+arachnid :- verify('have more than six legs'),
+	    verify('cold blooded'), verify('lay eggs').
+
+extinct :- verify('extinct').
+
+%How to ask a question
+%Program will ask something that is in the form
+%of 'verify(X)', then determine what the user
+%entered as an answer.
+ask(Question) :-
+	write('Is/does the animal '),
+	write(Question),
+	write('? '),
+	read(Response),
+	nl,
+	((Response == yes; Response == y)
+	->
+	assert(yes(Question));
+	assert(no(Question)), fail).
+
+%Determines how many arguments a response takes.
+%In this case, it is one.
+:- dynamic yes/1, no/1.
+
+%How to verify something
+%If the user enters 'yes', its true. Any other
+%letter entered will result in false, or failure.
+verify(S) :- (yes(S) ->	true; (no(S) -> fail; ask(S))).
+
+%Undo all assertions
+undo :- retract(yes(_)), fail.
+undo :- retract(no(_)), fail.
+undo.
